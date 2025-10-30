@@ -375,6 +375,10 @@ Possibilities of Git are way broader and can be useful for various workflows and
 
 In order to keep collaborativeness, mainetanance, scalability simple and clear, it is crucial to preserve consistency within the structure of the repositories.
 
+Template of the repository structure can be found [here](https://github.com/miletovaa/metabolomics_lab_template).
+
+Always **start new project by using this template** as a base and **follow** the established structure when **adding** new files or folders to existing repositories.
+
 ## Naming Conventions
 
 - Use in output directory id of the experiment param.yaml you used
