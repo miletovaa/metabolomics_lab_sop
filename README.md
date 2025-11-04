@@ -147,7 +147,21 @@ Once cloned, open the folder in VSCode.
 
 All repositories follow a shared structure described in the **[Repository Template section](#repository-template)** — please review it carefully.
 
-## 2. Setup the environment
+## 2. Configure variables
+
+> *Environment variables* and *parameters* are settings that control how the scripts behave. They allow us to customize the execution without changing the actual code, making it easier to run the same script with different configurations.
+
+### 2.1. `.env`
+
+Open `.env.example` file in the root of the repository. It contains environment variables that are used across the scripts, usually **paths, API keys and experiment ID**. Create a copy of this file and rename it to `.env`. Fill in all the variables with appropriate values.
+
+### 2.2. `params.yml`
+
+Open `params/000_default.yml` file. It contains experiment-specific parameters that are used across the scripts, usually names of the files and folders, settings for the analysis, etc. Check the parameters, if needed, create a copy of this file and rename it to `params/001_[your_experiment_name].yml`. Fill in all the variables with appropriate values.
+
+>*Hypothetical example, if we have a normalization script that is using IS+median normalization by default (parameters in `params/000_default.yml`: `IS_normalization=true` and `median_normalization=true`) and we want to run it using only median normalization, we would change the value of the parameter `IS_normalization` from `true` to `false`, and call the new file `params/001_median_normalization.yml`.*
+
+## 3. Setup the environment
 
 > *Packages* are essential instruments that greatly extend the functionality of the scripts. NumPy, pandas, and matplotlib are the most commonly used packages that extend python script with an ability to analyze data, plot graphs, and perform complex computations with ease.
 > 
@@ -165,11 +179,11 @@ Conda Wingman extension will display a button “Build Env from YAML.”
 
 Click it to create the environment with all the required packages.
 
-## 3. Run the script
+## 4. Run the script
 
 As for now we are using Python scripts and Jupyter notebooks to perform needed operations.
 
-### 3.1. Python script
+### 4.1. Python script
 
 Python extension finds all the available environments and displays them in the sidebar. Click `Python > Environment Managers > Conda > Named`. Click the Tick ("Set As Project Environment") next to the name of [just created environment](#2-setup-the-environment).
 
@@ -181,7 +195,7 @@ Click the "Play" button in the top-right corner to run the script.
 
 ![Run Python File](img/run-python.jpg)
 
-### 3.2. Jupyter Notebook
+### 4.2. Jupyter Notebook
 
 In order to run Jupyter Notebook open the needed .ipynb file using VSCode Explorer — it will be located in the `notebooks/` folder.
 
@@ -197,7 +211,7 @@ Now you can execute all the cells by clicking "Run All" all just one certain cel
 
 ![Run Python File](img/run-ipynb.jpg)
 
-### 4. Troubleshooting
+### 5. Troubleshooting
 
 If you encounter any issues during the setup or execution of the scripts/notebooks, consider the following steps:
 
