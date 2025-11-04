@@ -82,25 +82,49 @@ Download the latest Python 3.x installer (e.g., *Python 3.11*) for your operatin
 
 Download and install Git from the official page linked above.
 
+
 ### 0.3. Create GitHub account [[🔗 link]](https://github.com/)
 
 > *GitHub* is a cloud platform that stores all of our lab scripts. It allows to conveniently share projects’ code base/notebooks, observe these files and changes (done with Git) with a webpage, manage projects by creating and assigning tasks, and more.
 
 Open the link above and create a free account.
 
-### 0.4. Install Anaconda [[🔗 link]](https://www.anaconda.com/download/success)
+
+### 0.4. Configure Git and GitHub
+
+After installing Git and creating a GitHub account, we need to link them together.
+
+Open Git Bash (Windows) or terminal (macOS/Linux) and run the following commands, replacing the placeholders with your actual information:
+
+```bash
+git config --global user.name "Your GitHub Username"
+git config --global user.email "Your GitHub Email"
+```
+
+### Verification:
+To verify that Git is correctly configured, run the following commands in Git Bash or terminal:
+
+```bash
+git config --global user.name
+git config --global user.email
+```
+
+You should see your GitHub username and email printed in the terminal. If they appear correctly, Git is successfully linked to your GitHub account.
+
+
+### 0.5. Install Anaconda [[🔗 link]](https://www.anaconda.com/download/success)
 
 >The CLI program **conda** is both a package manager and an environment manager. This helps data scientists ensure that each version of each package has all the dependencies it requires and works correctly. **Anaconda Navigator** is a graphic user interface (GUI) for more user-friendly environment configuration and management.
 
 On the download page, **choose the “Distribution Installers” option** and follow the installation instructions for your operating system.
 
-### 0.5. Install Visual Studio Code [[🔗 link]](https://code.visualstudio.com/download)
+### 0.6. Install Visual Studio Code [[🔗 link]](https://code.visualstudio.com/download)
 
 > *Visual Studio Code (VSCode)* is a lightweight and highly customizable code editor (similar to Spyder) that is extremely versatile: we can perform development and running of the code and notebooks (ex. Jupyter notebook), manipulate environments, use built-in version control, and much more with clear user-friendly interface.
 
 Download VSCode from the link above and install it following the on-screen instructions.
 
-### 0.6. Configuration of VSCode: Extensions and Terminal
+### 0.7. Configuration of VSCode: Extensions and Terminal
 
 1. **Install required extensions ([documentation](https://code.visualstudio.com/docs/getstarted/extensions)):**
 Open the tab “Extensions” in the sidebar.
@@ -117,8 +141,8 @@ Click on the “Accounts” icon in the left bottom corner and log in to your Gi
     
     ![account.png](img/account.png)
     
-3. (Windows only) **Set VSCode’s default terminal to Git Bash**:
-Open the command palette (`Ctrl + Shift + P`) and type Terminal: Select Default Profile → choose **Git Bash**.
+<!-- 3. (Windows only) **Set VSCode’s default terminal to Git Bash**:
+Open the command palette (`Ctrl + Shift + P`) and type Terminal: Select Default Profile → choose **Git Bash**. -->
 
 
 > Generally, the main tools that we will use in VSCode are:
@@ -147,15 +171,19 @@ Once cloned, open the folder in VSCode.
 
 All repositories follow a shared structure described in the **[Repository Template section](#repository-template)** — please review it carefully.
 
-## 2. Configure variables
+## 2. Configure input
 
 > *Environment variables* and *parameters* are settings that control how the scripts behave. They allow us to customize the execution without changing the actual code, making it easier to run the same script with different configurations.
 
-### 2.1. `.env`
+### 2.1. Input data
 
-Open `.env.example` file in the root of the repository. It contains environment variables that are used across the scripts, usually **paths, API keys and experiment ID**. Create a copy of this file and rename it to `.env`. Fill in all the variables with appropriate values.
+Place all the needed input data files in the appropriate folder (`./data/`) as described in the **[Repository Template section](#repository-template)**.
 
-### 2.2. `params.yml`
+### 2.2. `.env`
+
+Open `.env.example` file in the root of the repository. It contains environment variables that are used across the scripts, usually **paths, API keys and experiment ID**. Create a copy of this file and rename it to `.env`. Fill in all the variables with appropriate values. Make sure that the paths are correct for your local machine.
+
+### 2.3. `params.yml`
 
 Open `params/000_default.yml` file. It contains experiment-specific parameters that are used across the scripts, usually names of the files and folders, settings for the analysis, etc. Check the parameters, if needed, create a copy of this file and rename it to `params/001_[your_experiment_name].yml`. Fill in all the variables with appropriate values.
 
@@ -171,15 +199,16 @@ Open `params/000_default.yml` file. It contains experiment-specific parameters t
 > 
 > In the lab we use Anaconda as both, package manager and environment manager.
 
-Open `env/environment.yml` file. It stores all the needed packages and their versions.
+<!-- TODO: redo environment management with conda navigator, not with vscode extensions -->
+<!-- Open `env/environment.yml` file. It stores all the needed packages and their versions.
 
 Conda Wingman extension will display a button “Build Env from YAML.”
 
 ![VSCode Screenshot](https://github.com/DJSaunders1997/Conda-Wingman/raw/HEAD/images/VSCode-Screenshot.png)
 
-Click it to create the environment with all the required packages.
+Click it to create the environment with all the required packages. -->
 
-## 4. Run the script
+## 4. Run the code
 
 As for now we are using Python scripts and Jupyter notebooks to perform needed operations.
 
@@ -211,11 +240,21 @@ Now you can execute all the cells by clicking "Run All" all just one certain cel
 
 ![Run Python File](img/run-ipynb.jpg)
 
-### 5. Troubleshooting
+## 5. Troubleshooting
 
-If you encounter any issues during the setup or execution of the scripts/notebooks, consider the following steps:
+If you encounter any issues during the setup or execution of the scripts/notebooks, refer to the troubleshooting section below for common problems and their solutions.
 
-To be updated...
+### Python extension is not displayed in the sidebar *(common, temporary)*
+
+<!-- TODO -->
+
+### Git signup errors *(common)*
+
+<!-- TODO -->
+
+### Git Bash is not recognized *(Windows-specific)*
+
+<!-- TODO -->
 
 # Maintenance guide
 
@@ -278,7 +317,7 @@ Be sure to create a new branch for your changes, commit them with clear and desc
 # Project creation guide
 
 To do...
-
+ 
 # Additional
 
 ## How does Git work?
