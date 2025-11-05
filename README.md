@@ -319,11 +319,11 @@ When new packages are added to the project or existing ones need to be updated, 
     Open the sidebar, navigate to `Python > Environment Managers > Conda > Named`. Click the pencil icon next to the environment name to open the environment management interface.
 
     ![conda packages](img/conda-packages.png)
-    
+
 2. **Rewrite the environment**:
     After making changes to the environment, it is crucial to update the `env/environment.yml` file to reflect these changes. This ensures that anyone cloning the repository in the future can recreate the exact environment needed for the project.
 
-    Open the `environment.yml` file and click `Export` button at the bottom of the environments list in Anaconda Navigator. Save the exported file as `environment.yml`, overwriting the existing file with the current state of the environment.
+    Open command palette (`Ctrl + Shift + P` / `⌘ + Shift + P`) and type `Tasks: Run Task`. Select `Export Conda Environment` from the list. This will regenerate the `environment.yml` file with the current state of the environment.
 
 ## 3. Saving your changes
 
