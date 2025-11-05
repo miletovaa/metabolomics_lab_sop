@@ -22,7 +22,7 @@ To achieve the goals of the **Standard Operating Procedures (SOP)**, the followi
 - **GitHub** — collaborative development platform for sharing code, reviewing changes, managing issues, and organizing project workflows.
 - **Anaconda** — environment management system that simplifies package installation and ensures reproducible setups across different operating systems.
 - **Visual Studio Code (VSCode)** — code editor used as the primary development environment, offering integrated support for Git, Jupyter notebooks, and Python environments.
-- **Spyder** — user-friendly code editor recommended for users who prefer a simpler interface for writing, debugging, and running Python scripts.
+<!-- - **Spyder** — user-friendly code editor recommended for users who prefer a simpler interface for writing, debugging, and running Python scripts. -->
 
 # Onboarding guide
 
@@ -61,13 +61,13 @@ Download the latest Python 3.x installer (e.g., *Python 3.11*) for your operatin
     
     Then type:
     
-    ```sql
+    ```
     python --version
     ```
     
     or
     
-    ```sql
+    ```
     python3 --version
     ```
     
@@ -132,7 +132,7 @@ Open the tab “Extensions” in the sidebar.
     ![Extensions tab](img/extensions-tab.png)
     
     Find and install following extensions:
-    ”Python”, “Jupyter”, “Jupyter Notebook Renderers”, “Better Comments”, “GitLens”, “Conda Wingman”, and “Material Icon Theme”.
+    ”Python”, “Jupyter”, “Better Comments”, “GitLens”, and “Material Icon Theme”.
 
     ![Recommended Extensions](img/recommended-extensions.png)
 
@@ -194,19 +194,15 @@ Open `params/000_default.yml` file. It contains experiment-specific parameters t
 > *Packages* are essential instruments that greatly extend the functionality of the scripts. NumPy, pandas, and matplotlib are the most commonly used packages that extend python script with an ability to analyze data, plot graphs, and perform complex computations with ease.
 > 
 > However, different projects may require different package versions, which can cause conflicts and errors.
-> 
 > To avoid this, we use an *environment* — an isolated workspace that allows us to install and manage specific package versions independently for each project, ensuring stability and reproducibility.
 > 
 > In the lab we use Anaconda as both, package manager and environment manager.
 
-<!-- TODO: redo environment management with conda navigator, not with vscode extensions -->
-<!-- Open `env/environment.yml` file. It stores all the needed packages and their versions.
+Open **Anaconda navigator** application. Click `Environments` tab on the left sidebar. 
 
-Conda Wingman extension will display a button “Build Env from YAML.”
+Add conda-forge channgel to the list of channels if it is not already there: click on the `Channels` button at the top right, then `Add`, type `conda-forge`, and click `Update channels`.
 
-![VSCode Screenshot](https://github.com/DJSaunders1997/Conda-Wingman/raw/HEAD/images/VSCode-Screenshot.png)
-
-Click it to create the environment with all the required packages. -->
+Then click `Import` button at the bottom of the environments list. Choose the `env/environment.yml` file from the cloned repository. Name the environment appropriately (for example, the same as the repository name) and click `Import`. This will create a new environment with all the required packages installed.
 
 ## 4. Run the code
 
@@ -214,13 +210,13 @@ As for now we are using Python scripts and Jupyter notebooks to perform needed o
 
 ### 4.1. Python script
 
-Python extension finds all the available environments and displays them in the sidebar. Click `Python > Environment Managers > Conda > Named`. Click the Tick ("Set As Project Environment") next to the name of [just created environment](#2-setup-the-environment).
+Python extension finds all the available environments and displays them in the sidebar. Click `Python > Environment Managers > Conda > Named`. Click the Tick ("Set As Project Environment") next to the name of [just created environment](#3-setup-the-environment).
 
 ![Python environment](img/activate-env.jpg)
 
 In order to run Python script open the file using VSCode Explorer — you will need either a single file from the `scripts/` folder or `src/[name]/main.py`
 
-Click the "Play" button in the top-right corner to run the script. 
+Click the `Play` button in the top-right corner to run the script.
 
 ![Run Python File](img/run-python.jpg)
 
@@ -228,15 +224,15 @@ Click the "Play" button in the top-right corner to run the script.
 
 In order to run Jupyter Notebook open the needed .ipynb file using VSCode Explorer — it will be located in the `notebooks/` folder.
 
-Click "Select Kernel" in the top right corner. 
+Click `Select Kernel` in the top right corner.
 
 ![Select Kernel](img/select-kernel.jpg)
 
-Choose "Python Environments..." and then the environment that you [just created](#2-setup-the-environment).
+Choose `Python Environments...` and then the environment that you [just created](#3-setup-the-environment).
 
 ![Choose environment](img/choose-env.jpg)
 
-Now you can execute all the cells by clicking "Run All" all just one certain cell by clicking "Execute Cell" from the left of the cell.
+Now you can execute all the cells by clicking `Run All` or just one certain cell by clicking `Execute Cell` from the left of the cell.
 
 ![Run Python File](img/run-ipynb.jpg)
 
@@ -244,17 +240,59 @@ Now you can execute all the cells by clicking "Run All" all just one certain cel
 
 If you encounter any issues during the setup or execution of the scripts/notebooks, refer to the troubleshooting section below for common problems and their solutions.
 
-### Python extension is not displayed in the sidebar *(common, temporary)*
+### ⚠️ Python extension is not displayed in the sidebar *(common, TEMPORARY)*
 
-<!-- TODO -->
+![Python extension error](img/python-ext-temp-error.jpg)
 
-### Git signup errors *(common)*
+Official documentation states that due to the maintenance issues, Python extension may not appear in the sidebar for some users. In order to fix this, try the following steps:
 
-<!-- TODO -->
+1. Open the command palette (`Ctrl + Shift + P` / `⌘ + Shift + P`) and type `Preferences: Open User Settings`.
 
-### Git Bash is not recognized *(Windows-specific)*
+2. In the search bar, type `python.useEnvironmentsExtension`.
 
-<!-- TODO -->
+3. Ensure that the checkbox for `Python: Use Environments Extension` is checked.
+
+    ![Python environments checkbox](img/python-ext-checkbox.jpg)
+
+4. Restart VSCode.
+
+### Environment not found error *(common)*
+
+If you cannot find the created conda environment in the list of available environments in VSCode Python extension, try the following steps:
+
+1. Reload the list of environments by clicking the refresh button in the Python extension sidebar.
+
+2. Ensure that the conda environment is activated in Anaconda Navigator and that all required packages are installed.
+
+3. If the environment still does not appear, try restarting VSCode.
+
+### ⚠️ Git signup errors *(common)*
+
+![Git signup error](img/git-signup-error.jpg)
+
+If you encounter a Git signup error, try the following steps:
+
+1. Run the following command in Git Bash (Windows) or in the terminal:
+
+    ```bash
+    git config --global user.name
+    git config --global user.email
+    ```
+
+    Ensure that your GitHub username and email are correctly set.
+
+2. If the information is incorrect or missing, set it using the following commands:
+
+    ```bash
+    git config --global user.name "Your GitHub Username"
+    git config --global user.email "Your GitHub Email"
+    ``` 
+
+3. Restart VSCode and try signing in to GitHub again.
+
+4. If the issue persists, refer to the official VSCode documentation for further assistance: [VSCode GitHub Authentication Issues](https://code.visualstudio.com/docs/editor/github#_troubleshooting-github-authentication-issues).
+
+<!-- ### ⚠️ Git Bash is not recognized *(Windows-specific)* -->
 
 # Maintenance guide
 
@@ -298,7 +336,7 @@ Be sure to create a new branch for your changes, commit them with clear and desc
 
 > ⚠️ **Do not edit Jupyter notebooks manually!**
 >
-> When working with Jupyter notebooks, it is important to keep in mind that the notebook files (`.ipynb`) are structured as JSON. This means that when you make changes to a notebook, you should **avoid making manual edits to the JSON structure** *unless you are familiar with it*. Instead, **use the VSCode Jupyter Extension** (or Jupyter interface) to make changes, as this will ensure that the notebook remains valid and functional. How to run Jupyter notebooks is described in the **[3.2. Jupyter Notebook](#32-jupyter-notebook)** section.
+> When working with Jupyter notebooks, it is important to keep in mind that the notebook files (`.ipynb`) are structured as JSON. This means that when you make changes to a notebook, you should **avoid making manual edits to the JSON structure** *unless you are familiar with it*. Instead, **use the VSCode Jupyter Extension** (or Jupyter interface) to make changes, as this will ensure that the notebook remains valid and functional. How to run Jupyter notebooks is described in the **[Jupyter Notebook](#42-jupyter-notebook)** section.
 
 > 🧹 **Clear output cells before committing**
 >
@@ -308,7 +346,7 @@ Be sure to create a new branch for your changes, commit them with clear and desc
 
 > 🛠️ **Render notebooks**
 >
-> For better visual representation of the notebook changes on GitHub (and other platforms), sometimes it can be needed to **render** the notebooks before committing (especially **before publication**). You can use the **Jupyter Notebook Renderers** extension in VSCode (that was already installed in the **[Configuration of VSCode Extensions](#06-configuration-of-vscode-terminal-and-extensions)** section) to achieve this.
+> For better visual representation of the notebook changes on GitHub (and other platforms), sometimes it can be needed to **render** the notebooks before committing (especially **before publication**). You can use the **Jupyter Notebook Renderers** extension in VSCode (that was already installed in the **[Configuration of VSCode Extensions](#07-configuration-of-vscode-extensions-and-terminal)** section) to achieve this.
 > 
 > This will generate a static HTML/PDF version of the notebook, which can be easily viewed in browsers/viewers without the need for a Jupyter environment.
 >
@@ -316,8 +354,40 @@ Be sure to create a new branch for your changes, commit them with clear and desc
 
 # Project creation guide
 
-To do...
+This section is intended to help lab members create new repository following the established SOP protocols. It covers best practices for setting up repositories, configuring environments, and organizing project files.
+
+Creation of a new repository is reasonable when starting a new project or analysis that requires its own dedicated codebase and environment. Ideally, each distinct logical unit of work should have its own repository to ensure clarity, maintainability, and reproducibility.
+
+## 1. Create a new repository from the template
+
+When starting a new project, it is essential to use the established template repository as a base. This ensures that all projects follow a consistent structure and adhere to the lab's SOP protocols.
+
+To do so, go to the [template repository](https://github.com/miletovaa/metabolomics_lab_template) and create a new repository based on it by clicking the `Use this template > Create a new repository` button.
+
+![Use this template](img/use-this-template.png)
  
+Fill in the repository name, description.
+
+## 2. Clone the repository
+
+Follow the instructions in the **[Clone the repository](#1-clone-the-repository)** section to clone the newly created repository to your local machine.
+
+## 3. Align template with your goals
+
+Given template is a general maximalistic structure, framework, with default configuration files, example scripts and placeholders to cover a wide range of potential use cases and make it instantly usable for various projects.
+
+After cloning the repository, review the template structure and files to ensure they align with the specific goals and requirements of your project. Make any necessary adjustments to the configuration files, environment settings, and project structure to suit your needs.
+
+The repository may *(and most probably will)* contain files and folders that are not relevant to your specific needs. Remove any unnecessary files and folders to keep the repository clean and focused on your project.
+
+## 4. Setup the environment
+
+Follow the instructions in the **[Setup the environment](#3-setup-the-environment)** section to create and configure the conda environment for your project.
+
+## 5. Maintain the repository
+
+Since the new repository is already having required structure and configuration files, you can directly proceed to the **[Maintenance guide](#maintenance-guide)** section to learn how to update and maintain the default project setup.
+
 # Additional
 
 ## How does Git work?
