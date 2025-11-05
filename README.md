@@ -136,6 +136,8 @@ Open the tab “Extensions” in the sidebar.
 
     ![Recommended Extensions](img/recommended-extensions.png)
 
+    > **Note:** You will be prompted to install additional dependencies that are useful for your project. Please accept these suggestions too and install the dependencies.
+
 2. **Log in to your GitHub account ([documentation](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git)):**
 Click on the “Accounts” icon in the left bottom corner and log in to your GitHub account.
     
@@ -200,7 +202,7 @@ Open `params/000_default.yml` file. It contains experiment-specific parameters t
 
 Open **Anaconda navigator** application. Click `Environments` tab on the left sidebar. 
 
-Add conda-forge channgel to the list of channels if it is not already there: click on the `Channels` button at the top right, then `Add`, type `conda-forge`, and click `Update channels`.
+Add conda-forge channel to the list of channels if it is not already there: click on the `Channels` button at the top right, then `Add`, type `conda-forge`, and click `Update channels`.
 
 Then click `Import` button at the bottom of the environments list. Choose the `env/environment.yml` file from the cloned repository. Name the environment appropriately (for example, the same as the repository name) and click `Import`. This will create a new environment with all the required packages installed.
 
@@ -214,7 +216,7 @@ Python extension finds all the available environments and displays them in the s
 
 ![Python environment](img/activate-env.jpg)
 
-In order to run Python script open the file using VSCode Explorer — you will need either a single file from the `scripts/` folder or `src/[name]/main.py`
+In order to run Python script open the file using VSCode Explorer — you will need either a single file from the `scripts/` folder or `src/[name]/main.py`.
 
 Click the `Play` button in the top-right corner to run the script.
 
@@ -317,12 +319,11 @@ When new packages are added to the project or existing ones need to be updated, 
     Open the sidebar, navigate to `Python > Environment Managers > Conda > Named`. Click the pencil icon next to the environment name to open the environment management interface.
 
     ![conda packages](img/conda-packages.png)
-
+    
 2. **Rewrite the environment**:
     After making changes to the environment, it is crucial to update the `env/environment.yml` file to reflect these changes. This ensures that anyone cloning the repository in the future can recreate the exact environment needed for the project.
 
-    Open the `environment.yml` file and click `Write Requirements File` at the status bar in the bottom of the window. This will overwrite the existing file with the current state of the environment. 
-    > **Note**: ensure that the path to the `environment.yml` file is correct in the command settings, it should point to `env/environment.yml`
+    Open the `environment.yml` file and click `Export` button at the bottom of the environments list in Anaconda Navigator. Save the exported file as `environment.yml`, overwriting the existing file with the current state of the environment.
 
 ## 3. Saving your changes
 
@@ -376,7 +377,7 @@ Follow the instructions in the **[Clone the repository](#1-clone-the-repository)
 
 Given template is a general maximalistic structure, framework, with default configuration files, example scripts and placeholders to cover a wide range of potential use cases and make it instantly usable for various projects.
 
-After cloning the repository, review the template structure and files to ensure they align with the specific goals and requirements of your project. Make any necessary adjustments to the configuration files, environment settings, and project structure to suit your needs.
+After cloning the repository, review the template structure and files to ensure they align with the specific goals and requirements of your project. Make any necessary adjustments to suit your needs: .env, params.yml, .vscode/extensions.json, etc.
 
 The repository may *(and most probably will)* contain files and folders that are not relevant to your specific needs. Remove any unnecessary files and folders to keep the repository clean and focused on your project.
 
@@ -496,7 +497,7 @@ Possibilities of Git are way broader and can be useful for various workflows and
 
 ## Repository Template
 
-In order to keep collaborativeness, mainetanance, scalability simple and clear, it is crucial to preserve consistency within the structure of the repositories.
+In order to keep collaborativeness, maintainance, scalability simple and clear, it is crucial to preserve consistency within the structure of the repositories.
 
 Template of the repository structure can be found [here](https://github.com/miletovaa/metabolomics_lab_template).
 
