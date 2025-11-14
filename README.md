@@ -399,7 +399,9 @@ Git is a version control system that tracks changes to files over time, allowing
 
 Down below is a quite good simplified illustration of how Git works:
 
-> ![Git commands](img/git.png)
+> |![Git commands](img/git.png)|
+> |:--:|
+> | *image taken from https://files.jrebel.com/pdf/zt_git_cheat_sheet.pdf*|
 >
 > *Working Directory* — the files and folders you see on your computer.
 >
@@ -491,7 +493,9 @@ Branching feature allows multiple developers to work on different features or fi
 
 Broader Git workflow is illustrated below:
 
-![Git flow](img/git-2.png)
+|![Git flow](img/git-2.png)|
+|:--:|
+| *image taken from https://patrickzahnd.ch/*|
 
 Possibilities of Git are way broader and can be useful for various workflows and collaboration strategies. For more information, please refer to the official Git documentation: [Git - Documentation](https://git-scm.com/doc)
 
